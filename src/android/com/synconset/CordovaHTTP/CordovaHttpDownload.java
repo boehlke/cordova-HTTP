@@ -14,8 +14,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
 
-import javax.net.ssl.SSLHandshakeException;
-
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.file.FileUtils;
 
@@ -59,8 +57,6 @@ public class CordovaHttpDownload extends CordovaHttp implements Runnable {
         } catch (HttpRequestException e) {
             if (e.getCause() instanceof UnknownHostException) {
                 this.respondWithError(0, "The host could not be resolved");
-            } else if (e.getCause() instanceof SSLHandshakeException) {
-                this.respondWithError("SSL handshake failed");
             } else {
                 this.respondWithError("There was an error with the request");
             }

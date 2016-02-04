@@ -16,8 +16,6 @@ import org.apache.cordova.CallbackContext;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.net.ssl.SSLHandshakeException;
-
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
@@ -85,8 +83,6 @@ public class CordovaHttpUpload extends CordovaHttp implements Runnable {
         }  catch (HttpRequestException e) {
             if (e.getCause() instanceof UnknownHostException) {
                 this.respondWithError(0, "The host could not be resolved");
-            } else if (e.getCause() instanceof SSLHandshakeException) {
-                this.respondWithError("SSL handshake failed");
             } else {
                 this.respondWithError("There was an error with the request");
             }
